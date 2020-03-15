@@ -17,7 +17,6 @@ def problem1(nums, target):
         else:
             print("indexes found: " + str(i) + ", " + str(dict.get(target-x)))
     return("not found")
-problem1([2, 7, 11, 15],9)
 
 # Problem 2: Add Two Numbers
 # You are given two non-empty linked lists representing two non-negative integers.
@@ -29,4 +28,23 @@ def problem2(l1, l2):
         :type l2: ListNode
         :rtype: ListNode
         """
-problem2()
+        returnNode = ListNode(0)
+        tailPointer = returnNode
+        carry = 0
+
+        while l1 or l2 or carry:
+            val1 = (l1.val if l1 else 0)
+            val2 = (l2.val if l2 else 0)
+
+            sum = val1 + val2 + carry
+
+            carry = (1 if sum >= 10 else 0)
+            sum = (sum - 10 if sum >= 10 else sum)
+
+            tailPointer.next = ListNode(sum)
+            tailPointer = tailPointer.next
+
+            l1 = (l1.next if l1 else None)
+            l2 = (l2.next if l2 else None)
+
+        return returnNode.next
