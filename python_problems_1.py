@@ -22,6 +22,7 @@ def problem1(nums, target):
 # You are given two non-empty linked lists representing two non-negative integers.
 # The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
 # You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+# Solution: Space: O(n), Time: O(n)
 def problem2(l1, l2):
         """
         :type l1: ListNode
@@ -48,3 +49,23 @@ def problem2(l1, l2):
             l2 = (l2.next if l2 else None)
 
         return returnNode.next
+
+# Problem 3: Longest Substring Without Repeating Characters
+# Given a string, find the length of the longest substring without repeating characters.
+# Solution: Sliding Window, Space: O(n), Time: O(n)
+def problem3(s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        maximum = i = j = 0
+        dict = {}
+        while i < len(s) and j < len(s):
+            if s[j] not in dict:
+                dict[s[j]] = 1
+                j += 1
+                maximum = max(maximum, j-i)
+            else:
+                dict.pop(s[i])
+                i += 1
+        return maximum
