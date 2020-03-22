@@ -69,3 +69,20 @@ def problem3(s):
                 dict.pop(s[i])
                 i += 1
         return maximum
+
+# Problem 7: Reverse Integer
+# Given a 32-bit signed integer, reverse digits of an integer
+# Solution: Space: O(n), Time: O(n)
+def problem7(x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        stack = []
+        result = ""
+        for c in str(x):
+            stack.append(c)
+        while stack:
+            a = stack.pop()
+            result = result + a
+        return int(result)
